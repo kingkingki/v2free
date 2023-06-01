@@ -43,6 +43,23 @@ def checkin(email=os.environ.get('EMAIL'), password=os.environ.get('PASSWORD'),
 
 result = checkin()
 
+
+# post message by feishu robot
+url = 'https://open.feishu.cn/open-apis/bot/v2/hook/02c2f817-ed14-45db-8681-8b9bb8cd6216'
+headers = {'Content-Type': 'application/json'}
+data = {
+  "msg_type": "text",
+  "content": {
+    "text": result
+  }
+}
+response = requests.post(url, headers=headers, data=json.dumps(data))
+if response.status_code == 200:
+    print("飞书机器人消息发送成功")
+else:
+    print("飞书机器人消息发送失败")
+
+
 # post message by feishu robot
 url = 'https://open.feishu.cn/open-apis/bot/v2/hook/7fe750a8-a325-4839-bae7-432f985c04e5'
 headers = {'Content-Type': 'application/json'}
