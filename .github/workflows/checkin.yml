@@ -43,4 +43,4 @@ jobs:
           TGBOT: ${{ secrets.TGBOT }}
           TGUSERID: ${{ secrets.TGUSERID }}
         run: |
-          # python3 ./main.py
+          python3 ./main.py
